@@ -12,7 +12,13 @@
 			<nav>
 				<button data-bind="click: addLane">Add Lane</button>
 				<button data-bind="click: addCard">Add Card</button>
+				<button data-bind="click: addUser">Add User</button>
 			</nav>
+
+			<ul data-bind="foreach: users">
+				<li data-bind="text: $data"></li>
+			</ul>
+
 		</aside>
 
 		<section>
@@ -22,15 +28,15 @@
 	</div>
 
 	<script type="text/html" id="lane-template">
-		<article data-bind="sortable: true">
+		<article>
 			<h1 data-bind="text: title"></h1>
-			<div class="lane" data-bind="template: { name: 'card-template', foreach: cards }">
+			<div class="lane" data-bind="template: { name: 'card-template', foreach: cards }, sortableList: $data">
 			</div>
 		</article>
 	</script>
 
 	<script type="text/html" id="card-template">
-		<summary>
+		<summary data-bind="sortableItem: $data">
 			<h2 data-bind="text: title"></h2>
 			<a href="#"><span data-bind="text: id"></span></a>
 		</summary>
@@ -41,6 +47,7 @@
 	<script type="text/javascript" language="javascript" src="jqueryui.js"></script>
 	<script type="text/javascript" language="javascript" src="jquery.store.js"></script>
 	<script type="text/javascript" language="javascript" src="knockout.js"></script>
+	<script type="text/javascript" language="javascript" src="knockout.mapping.js"></script>
 	<script type="text/javascript" language="javascript" src="app.js"></script>
 </body>
 
