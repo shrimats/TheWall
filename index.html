@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Kanban Board</title>
+	<link rel="stylesheet" type="text/css" href="reset.css" />
+	<link rel="stylesheet" type="text/css" href="base.css" />
+</head>
+
+<body>
+	<div class="container">
+		<aside>
+			<nav>
+				<button data-bind="click: addLane">Add Lane</button>
+				<button data-bind="click: addCard">Add Card</button>
+			</nav>
+		</aside>
+
+		<section>
+			<hgroup class="wall" data-bind="template: { name: 'lane-template', foreach: lanes }">
+			</hgroup>
+		</section>
+	</div>
+
+	<script type="text/html" id="lane-template">
+		<article data-bind="sortable: true">
+			<h1 data-bind="text: title"></h1>
+			<div class="lane" data-bind="template: { name: 'card-template', foreach: cards }">
+			</div>
+		</article>
+	</script>
+
+	<script type="text/html" id="card-template">
+		<summary>
+			<h2 data-bind="text: title"></h2>
+			<a href="#"><span data-bind="text: id"></span></a>
+		</summary>
+	</script>
+
+	<script type="text/javascript" language="javascript" src="json2.js"></script>
+	<script type="text/javascript" language="javascript" src="jquery.js"></script>
+	<script type="text/javascript" language="javascript" src="jqueryui.js"></script>
+	<script type="text/javascript" language="javascript" src="jquery.store.js"></script>
+	<script type="text/javascript" language="javascript" src="knockout.js"></script>
+	<script type="text/javascript" language="javascript" src="app.js"></script>
+</body>
+
+</html>
